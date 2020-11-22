@@ -7,7 +7,10 @@ var model = require('../model')
 // router.get('/', function(req, res, next) {
 //   res.render('index', { title: 'Express' });
 // });
-
+router.get('/test',function(req,res,next){
+  console.log('请求携带的参数为',req.query)
+  res.send(测试接口);
+});
 
 router.get('/addStudent',function(req,res,next){
   console.log('请求携带的参数为',req.query)

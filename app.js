@@ -8,7 +8,17 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Credentials","true");  //服务端允许携带cookie
+  res.header("Access-Control-Allow-Origin", "*");  //允许的访问域
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");  //访问头
+  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  //访问方法
+  res.header("X-Powered-By",' 3.2.1');
+  res.header("Content-Type", "application/json;charset=utf-8");
+  
+  next();
+  
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
